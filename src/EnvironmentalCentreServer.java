@@ -10,6 +10,7 @@ import org.omg.PortableServer.POA;
 import org.omg.PortableServer.POAHelper;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -17,17 +18,72 @@ import java.util.Arrays;
 import java.util.Iterator;
 
 class EnvironmentalCentreServant extends EnvironmentalCentrePOA {
+    private EnvironmentalCentreServer parent;
     public ArrayList<CentreInfo> connectedCentres;
-    ArrayList<Reading> pulled_readings;
+    ArrayList<Reading> centreReadings;
+    private ORB orb;
+    private NamingContextExt nameService;
 
-    public EnvironmentalCentreServant() {
+
+    public EnvironmentalCentreServant(EnvironmentalCentreServer parentGUI, ORB orb_val) {
+        this.parent = parentGUI;
         connectedCentres = new ArrayList<>();
-        pulled_readings = new ArrayList<>();
+        centreReadings = new ArrayList<>();
+        try {
+            orb = orb_val;
+            // Get a reference to the Naming service
+            org.omg.CORBA.Object nameServiceObj = orb.resolve_initial_references ("NameService");
+            if (nameServiceObj == null) {
+                System.out.println("nameServiceObj = null");
+                return;
+            }
+
+            // Use NamingContextExt which is part of the Interoperable
+            // Naming Service (INS) specification.
+            nameService = NamingContextExtHelper.narrow(nameServiceObj);
+            if (nameService == null) {
+                System.out.println("nameService = null");
+                return;
+            }
+
+        } catch (Exception e) {
+            System.out.println("ERROR : " + e) ;
+            e.printStackTrace(System.out);
+        }
     }
 
     @Override
     public Reading[] readings() {
-        return pulled_readings.toArray(new Reading[0]);
+        ArrayList<Reading> readings = new ArrayList<>();
+        centreReadings.clear();
+       for(int i = 0; i < connectedCentres.size(); i++){
+           String centreName = connectedCentres.get(i).centre_name;
+           try {
+               RegionalCentre centreServant = RegionalCentreHelper.narrow(nameService.resolve_str(centreName));
+               ArrayList<Reading> stationReadings = new ArrayList<>(Arrays.asList(centreServant.allReadings()));
+               //check if we have any new readings
+               if(stationReadings.size() != 0) {
+
+                   Iterator<Reading> pulledIterator = stationReadings.iterator();
+
+                   while(pulledIterator.hasNext()) {
+                       Reading pulled_reading = pulledIterator.next();
+                       if(!listContains(centreReadings, pulled_reading)) {
+                           centreReadings.add(pulled_reading);
+                       }
+                   }
+               }
+           } catch (NotFound notFound) {
+               notFound.printStackTrace();
+           } catch (CannotProceed cannotProceed) {
+               cannotProceed.printStackTrace();
+           } catch (InvalidName invalidName) {
+               invalidName.printStackTrace();
+           }
+       }
+        centreReadings.addAll(readings);
+
+        return centreReadings.toArray(new Reading[0]);
     }
 
     @Override
@@ -43,7 +99,20 @@ class EnvironmentalCentreServant extends EnvironmentalCentrePOA {
     @Override
     public void registerRegionalCentre(CentreInfo info) {
         connectedCentres.add(info);
+        parent.addToCentreList(info);
         System.out.println("New centre added. " + info.centre_name);
+    }
+
+    public boolean listContains(ArrayList<Reading> list, Reading r) {
+        for(Reading reading: list){
+            if((reading.reading_value == r.reading_value) &&
+                    (reading.station_name.equals(r.station_name)) &&
+                    (reading.date == r.date) &&
+                    (reading.time == r.time)){
+                return true;
+            }
+        }
+        return false;
     }
 }
 
@@ -51,14 +120,25 @@ class EnvironmentalCentreServant extends EnvironmentalCentrePOA {
 public class EnvironmentalCentreServer extends JFrame {
     NamingContextExt nameService;
     EnvironmentalCentreServant servant;
-    ArrayList<Reading> centreReadings;
+    EnvironmentalCentreServer parentGUI;
+
+    //main panel
     private JPanel panel;
-    private JButton getConnectedCentres;
-    private JButton getReadings;
+
+    private JPanel centresPanel;
+    private JPanel stationsPanel;
+    private JPanel readingsPanel;
+    private JButton getCentreStations;
+    private JButton getStationReadings;
+    private JButton getAllReadings;
     private String centreName;
+    private JList<CentreInfo> centreList;
+    private JList<StationInfo> stationList;
+    private JList<Reading> readingsList;
+    DefaultListModel<CentreInfo> centreListModel;
+    DefaultListModel<StationInfo> stationListModel;
+    DefaultListModel<Reading> readingsListModel;
     public EnvironmentalCentreServer(String[] args) {
-        //EnglandEnvironmentalCentre
-        centreReadings = new ArrayList<>();
         centreName = args[0];
         try {
             if(centreName == null) {
@@ -73,7 +153,7 @@ public class EnvironmentalCentreServer extends JFrame {
             rootpoa.the_POAManager().activate();
 
             // create servant
-            servant = new EnvironmentalCentreServant();
+            servant = new EnvironmentalCentreServant(this, orb);
 
             // get the 'stringified IOR'
             org.omg.CORBA.Object ref = rootpoa.servant_to_reference(servant);
@@ -100,11 +180,75 @@ public class EnvironmentalCentreServer extends JFrame {
 
 
             //GUI
+            //main panel
             panel = new JPanel();
-            getConnectedCentres = new JButton("Get centre list");
-            getReadings = new JButton("Get all centreReadings");
-            panel.add(getConnectedCentres);
-            panel.add(getReadings);
+            centresPanel = new JPanel();
+            stationsPanel = new JPanel();
+            readingsPanel = new JPanel();
+
+            //centre panel
+            centresPanel.setLayout(new BoxLayout(centresPanel, BoxLayout.PAGE_AXIS));
+            centresPanel.setPreferredSize(new Dimension(250, 200));
+
+
+            centreListModel = new DefaultListModel<>();
+            centreList = new JList<>(centreListModel);
+            centreList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+            centreList.setVisibleRowCount(-1);
+            CentreListCellRenderer centreRenderer = new CentreListCellRenderer();
+            centreList.setCellRenderer(centreRenderer);
+            JScrollPane centreListScroller = new JScrollPane(centreList);
+            centreListScroller.setPreferredSize(new Dimension(250, 80));
+            JLabel centreListTitle = new JLabel("Connected centres");
+            getCentreStations = new JButton("Get stations at centre");
+
+            centresPanel.add(centreListTitle);
+            centresPanel.add(centreListScroller);
+            centresPanel.add(getCentreStations);
+
+            //station panel
+            stationsPanel.setLayout(new BoxLayout(stationsPanel, BoxLayout.PAGE_AXIS));
+            stationsPanel.setPreferredSize(new Dimension(250, 200));
+
+            stationListModel = new DefaultListModel<>();
+            stationList = new JList<>(stationListModel);
+            stationList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+            stationList.setVisibleRowCount(-1);
+            StationListCellRenderer stationRenderer = new StationListCellRenderer();
+            stationList.setCellRenderer(stationRenderer);
+            JScrollPane stationListScroller = new JScrollPane(stationList);
+            stationListScroller.setPreferredSize(new Dimension(250, 80));
+            JLabel stationListTitle = new JLabel("Stations for the centre");
+            getStationReadings = new JButton("Get station readings");
+            getAllReadings = new JButton("Get all readings");
+            stationsPanel.add(stationListTitle);
+            stationsPanel.add(stationListScroller);
+            stationsPanel.add(getStationReadings);
+            stationsPanel.add(getAllReadings);
+
+            //readings panel
+            readingsPanel.setLayout(new BoxLayout(readingsPanel, BoxLayout.PAGE_AXIS));
+            readingsPanel.setPreferredSize(new Dimension(250, 200));
+
+            readingsListModel = new DefaultListModel<>();
+            readingsList = new JList<>(readingsListModel);
+            readingsList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+            readingsList.setVisibleRowCount(-1);
+            ReadingsListCellRenderer readingsRenderer = new ReadingsListCellRenderer();
+            readingsList.setCellRenderer(readingsRenderer);
+            JScrollPane readingsListScroller = new JScrollPane(readingsList);
+            readingsListScroller.setPreferredSize(new Dimension(250, 80));
+            JLabel readingsListTitle = new JLabel("Readings");
+
+            readingsPanel.add(readingsListTitle);
+            readingsPanel.add(readingsListScroller);
+
+
+
+
+            panel.add(centresPanel);
+            panel.add(stationsPanel);
+            panel.add(readingsPanel);
             getContentPane().add(panel, "Center");
             initListeners();
             setSize(400, 500);
@@ -124,81 +268,64 @@ public class EnvironmentalCentreServer extends JFrame {
     }
 
     public void initListeners() {
-        getConnectedCentres.addActionListener(new ActionListener() {
+        getCentreStations.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(servant.connectedCentres().length > 0) {
-                    for(int i = 0; i<servant.connectedCentres().length; i++) {
-                        System.out.println(servant.connectedCentres()[i].centre_name);
+                stationListModel.clear();
+                CentreInfo selectedCentre = centreList.getSelectedValue();
+                try {
+                    RegionalCentre centreServant = RegionalCentreHelper.narrow(nameService.resolve_str(selectedCentre.centre_name));
+                    StationInfo[] stationList = centreServant.connectedDevices();
+                    for(int i = 0; i < stationList.length; i++) {
+                        stationListModel.addElement(stationList[i]);
                     }
+
+                } catch (NotFound notFound) {
+                    notFound.printStackTrace();
+                } catch (CannotProceed cannotProceed) {
+                    cannotProceed.printStackTrace();
+                } catch (InvalidName invalidName) {
+                    invalidName.printStackTrace();
                 }
             }
         });
 
-        getReadings.addActionListener(new ActionListener() {
+        getStationReadings.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(servant.connectedCentres().length > 0) {
-                    for(int x = 0; x<servant.connectedCentres().length; x++) {
-                        String centre_name = servant.connectedCentres()[x].centre_name;
-                        try {
-
-                            RegionalCentre regional_servant = RegionalCentreHelper.narrow(nameService.resolve_str(centre_name));
-
-                            ArrayList<Reading> pulled_readings = new ArrayList<>(Arrays.asList(regional_servant.readings()));
-
-                            //check if we have any new readings
-                            if(pulled_readings.size() != 0) {
-                                //check if this centre has any readings at all
-                                int initialSize = centreReadings.size();
-                                if (initialSize > 0) {
-                                    for (int j = 0; j <= initialSize - 1; j++) {
-                                        Reading station_reading = centreReadings.get(j);
-
-                                        //if it does compare the held readings with the new ones to avoid duplicates
-                                        int pulledInitialSize = pulled_readings.size();
-                                        for (int i = 0; i <= pulledInitialSize - 1; i++) {
-                                            Reading pulled_reading = pulled_readings.get(i);
-                                            if ((station_reading.reading_value == pulled_reading.reading_value) &&
-                                                    (station_reading.station_name.equals(pulled_reading.station_name)) &&
-                                                    (station_reading.date == pulled_reading.date) &&
-                                                    (station_reading.time == pulled_reading.time)) {
-                                                pulled_readings.remove(pulled_reading);
-                                                break;
-                                            }
-                                            pulled_readings.remove(pulled_reading);
-                                            centreReadings.add(pulled_reading);
-                                        }
-                                    }
-
-                                } else {
-                                    //if the station_reading is of length, we can safely add all of the pulled in readings
-                                    centreReadings.addAll(pulled_readings);
-                                }
-                            }
-//                            System.out.println("Readings from regional centre:" + regional_servant.centreInfo().centre_name + "/ Stations connected: " + centreReadings.size());
-                            for(Reading reading : centreReadings) {
-                                System.out.println(reading.station_name);
-                                System.out.println(reading.reading_value);
-                                System.out.println(reading.date);
-                                System.out.println(reading.time);
-                                System.out.println("-------------------------------");
-
-                            }
-                        } catch (NotFound notFound) {
-                            notFound.printStackTrace();
-                        } catch (CannotProceed cannotProceed) {
-                            cannotProceed.printStackTrace();
-                        } catch (InvalidName invalidName) {
-                            invalidName.printStackTrace();
-                        } catch (Exception ex) {
-                            ex.printStackTrace();
-                        }
-
+                readingsListModel.clear();
+                try {
+                    RegionalCentre regionalCentreServant = RegionalCentreHelper.narrow(nameService.resolve_str(centreList.getSelectedValue().centre_name));
+                    Reading[] stationReadings = regionalCentreServant.readings(stationList.getSelectedValue().station_name);
+                    for(int i = 0; i < stationReadings.length; i++) {
+                       readingsListModel.addElement(stationReadings[i]);
                     }
+                } catch (NotFound notFound) {
+                    notFound.printStackTrace();
+                } catch (CannotProceed cannotProceed) {
+                    cannotProceed.printStackTrace();
+                } catch (InvalidName invalidName) {
+                    invalidName.printStackTrace();
+                }
+
+            }
+        });
+
+        getAllReadings.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                readingsListModel.clear();
+                Reading[] readings = servant.readings();
+                for(int i = 0; i < readings.length; i++) {
+                    readingsListModel.addElement(readings[i]);
                 }
             }
         });
+
+
+    }
+    public void addToCentreList(CentreInfo info) {
+        centreListModel.addElement(info);
     }
 
     public static void main(String args[]) {
@@ -208,5 +335,51 @@ public class EnvironmentalCentreServer extends JFrame {
                 new EnvironmentalCentreServer(arguments).setVisible(true);
             }
         });
+    }
+}
+
+class CentreListCellRenderer extends DefaultListCellRenderer {
+    public Component getListCellRendererComponent(JList<?> list,
+                                                  Object value,
+                                                  int index,
+                                                  boolean isSelected,
+                                                  boolean cellHasFocus) {
+        super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+        if (value instanceof CentreInfo) {
+            CentreInfo centre = (CentreInfo)value;
+            setText(centre.centre_name);
+        }
+        return this;
+    }
+}
+
+
+class StationListCellRenderer extends DefaultListCellRenderer {
+    public Component getListCellRendererComponent(JList<?> list,
+                                                  Object value,
+                                                  int index,
+                                                  boolean isSelected,
+                                                  boolean cellHasFocus) {
+        super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+        if (value instanceof StationInfo) {
+            StationInfo station = (StationInfo)value;
+            setText(station.station_name);
+        }
+        return this;
+    }
+}
+
+class ReadingsListCellRenderer extends DefaultListCellRenderer {
+    public Component getListCellRendererComponent(JList<?> list,
+                                                  Object value,
+                                                  int index,
+                                                  boolean isSelected,
+                                                  boolean cellHasFocus) {
+        super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+        if (value instanceof Reading) {
+            Reading reading = (Reading)value;
+            setText(reading.station_name + " - " + reading.reading_value + " - " + reading.date + "/" + reading.time);
+        }
+        return this;
     }
 }

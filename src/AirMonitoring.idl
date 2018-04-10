@@ -41,7 +41,8 @@ module AirMonitoring {
         attribute stationList connectedDevices;
         CentreInfo centreInfo();
         void setInfo(in CentreInfo info);
-        readings readings();
+        readings allReadings();
+        readings readings(in string station_name);
         alarms alarms();
         void registerMonitoringStation(in StationInfo info);
 

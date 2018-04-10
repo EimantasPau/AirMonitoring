@@ -68,7 +68,9 @@ class RegionalCentreServant extends RegionalCentrePOA {
     }
 
     //returns an array of centreReadings from all stations connected to this centre
-    public Reading[] readings() {
+    @Override
+    public Reading[] allReadings() {
+        ArrayList<Reading> readings = new ArrayList<>();
         //loop through all connected stations
         for(StationInfo station : connectedDevices) {
             String station_name = station.station_name;
@@ -80,33 +82,15 @@ class RegionalCentreServant extends RegionalCentrePOA {
                 ArrayList<Reading> pulled_readings = new ArrayList<>(Arrays.asList(monitoringStation.reading_log()));
                 //check if we have any new readings
                 if(pulled_readings.size() != 0) {
-                    //check if this centre has any readings at all
-                    int initialSize = station_readings.size();
-                    if(initialSize > 0){
-                        for (int j = 0; j <= initialSize - 1; j++) {
-                            Reading station_reading = station_readings.get(j);
 
-                            //if it does compare the held readings with the new ones to avoid duplicates
-                            int pulledInitialSize = pulled_readings.size();
-                            for (int i = 0; i <= pulledInitialSize - 1; i++) {
-                                Reading pulled_reading = pulled_readings.get(i);
-                                if((station_reading.reading_value == pulled_reading.reading_value) &&
-                                        (station_reading.station_name.equals(pulled_reading.station_name)) &&
-                                        (station_reading.date == pulled_reading.date) &&
-                                        (station_reading.time == pulled_reading.time)) {
-                                    pulled_readings.remove(pulled_reading);
-                                    break;
-                                }
-                                pulled_readings.remove(pulled_reading);
+                    Iterator<Reading> pulledIterator = pulled_readings.iterator();
+
+                    while(pulledIterator.hasNext()) {
+                        Reading pulled_reading = pulledIterator.next();
+                            if(!listContains(station_readings, pulled_reading)) {
                                 station_readings.add(pulled_reading);
                             }
                         }
-
-                    } else {
-                        //if the station_reading is of length, we can safely add all of the pulled in readings
-                        station_readings.addAll(pulled_readings);
-                    }
-
                 }
             } catch (NotFound notFound) {
                 notFound.printStackTrace();
@@ -118,7 +102,27 @@ class RegionalCentreServant extends RegionalCentrePOA {
                 ex.printStackTrace();
             }
         }
+        station_readings.addAll(readings);
+
         return station_readings.toArray(new Reading[0]);
+    }
+
+
+    @Override
+    public Reading[] readings(String station_name) {
+        try {
+            MonitoringStation station = MonitoringStationHelper.narrow(nameService.resolve_str(station_name));
+            return station.reading_log();
+        } catch (NotFound notFound) {
+            notFound.printStackTrace();
+            return new Reading[0];
+        } catch (CannotProceed cannotProceed) {
+            cannotProceed.printStackTrace();
+            return new Reading[0];
+        } catch (InvalidName invalidName) {
+            invalidName.printStackTrace();
+            return new Reading[0];
+        }
     }
 
     @Override
@@ -130,6 +134,18 @@ class RegionalCentreServant extends RegionalCentrePOA {
     public void registerMonitoringStation(StationInfo info) {
         connectedDevices.add(info);
         System.out.println("New station added." + info.station_name);
+    }
+
+    public boolean listContains(ArrayList<Reading> list, Reading r) {
+        for(Reading reading: list){
+            if((reading.reading_value == r.reading_value) &&
+                    (reading.station_name.equals(r.station_name)) &&
+                    (reading.date == r.date) &&
+                    (reading.time == r.time)){
+                return true;
+            }
+        }
+        return false;
     }
 }
 
