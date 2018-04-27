@@ -7,16 +7,21 @@ import org.omg.PortableServer.POA;
 import org.omg.PortableServer.POAHelper;
 
 import javax.swing.*;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Calendar;
+
 
 
 class MonitoringStationServant extends MonitoringStationPOA {
     public StationInfo info;
     private MonitoringStationServer parent;
-    ArrayList<Reading> reading_log;
-    Timer timer;
+    private ArrayList<Reading> reading_log;
+    private Timer timer;
+    //value used to see if the reading is alarming
+    private static final int readingThreshold = 25;
 
     public MonitoringStationServant(MonitoringStationServer parentGUI) {
         parent = parentGUI;
@@ -25,12 +30,20 @@ class MonitoringStationServant extends MonitoringStationPOA {
 
     @Override
     public Reading reading() {
+        //get reading values
         int readingValue = parent.getReadingValue();
-        String station_name = getInfo().station_name;
-        int time = (int)Math.floor(Math.random() *100);
-        int date = (int)Math.floor(Math.random() *100);
+        String station_name = get_info().station_name;
+        int time = getTimeInMinutes();
+        int date = Calendar.getInstance().get(Calendar.DAY_OF_YEAR);
+        //create new reading
+        Reading reading =new Reading(time, date, station_name, readingValue);
+        //if reading is above threshold, raise an alarm
+        if(readingValue > readingThreshold){
+            parent.regionalServant.raise_alarm(reading);
+        }
 
-        return new Reading(time, date, station_name, readingValue);
+        parent.populateLog();
+        return reading;
     }
 
     @Override
@@ -44,12 +57,12 @@ class MonitoringStationServant extends MonitoringStationPOA {
     }
 
     @Override
-    public void setInfo(StationInfo info) {
+    public void set_info(StationInfo info) {
         this.info = info;
     }
 
     @Override
-    public StationInfo getInfo() {
+    public StationInfo get_info() {
         return info;
     }
 
@@ -62,7 +75,7 @@ class MonitoringStationServant extends MonitoringStationPOA {
                 parent.populateLog();
             }
         });
-        timer.start(); // Go go go!
+        timer.start();
     }
 
     @Override
@@ -75,6 +88,13 @@ class MonitoringStationServant extends MonitoringStationPOA {
         parent.clearLog();
         reading_log.clear();
     }
+
+    public int getTimeInMinutes() {
+        int hours = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+        int minute = Calendar.getInstance().get(Calendar.MINUTE);
+        return hours * 60 + minute;
+    }
+
 }
 
 public class MonitoringStationServer extends JFrame {
@@ -83,7 +103,6 @@ public class MonitoringStationServer extends JFrame {
     private JScrollPane scrollpane;
     private JTextArea textarea;
     private JButton takeReadingBtn;
-//    private JTextField readingValue;
     private JButton turnOnBtn;
     private JButton turnOffBtn;
     private JButton resetBtn;
@@ -92,11 +111,11 @@ public class MonitoringStationServer extends JFrame {
     //program arguments
     private String name;
     private String location;
-    private String regionalStation;
+    private String regionalCentre;
 
     //server servant
     private MonitoringStationServant servant;
-
+    RegionalCentre regionalServant;
     public MonitoringStationServer(String[] args){
 
         if(args.length < 3) {
@@ -106,9 +125,9 @@ public class MonitoringStationServer extends JFrame {
         //get program args
         name = args[0];
         location = args[1];
-        regionalStation = args[2];
+        regionalCentre = args[2];
 
-        if(name == null || location == null || regionalStation == null) {
+        if(name == null || location == null || regionalCentre == null) {
             System.out.print("Station information invalid");
             return;
         }
@@ -127,38 +146,30 @@ public class MonitoringStationServer extends JFrame {
                 return;
             }
 
-            // Use NamingContextExt which is part of the Interoperable
-            // Naming Service (INS) specification.
+            // Use NamingContextExt
             NamingContextExt nameService = NamingContextExtHelper.narrow(nameServiceObj);
             if (nameService == null) {
                 System.out.println("nameService = null");
                 return;
             }
-            //Check if an object with that name already exists in the naming service
-
             // create servant
             servant = new MonitoringStationServant(this);
-
 
             // get the 'stringified IOR'
             org.omg.CORBA.Object ref = rootpoa.servant_to_reference(servant);
             MonitoringStation cref = MonitoringStationHelper.narrow(ref);
-            StationInfo newStationInfo = new StationInfo(name, location, "test");
-            servant.setInfo(newStationInfo);
+            StationInfo newStationInfo = new StationInfo(name, location);
+            servant.set_info(newStationInfo);
 
             // bind the station object in the Naming service
             NameComponent[] sName = nameService.to_name(name);
             nameService.rebind(sName, cref);
 
-            RegionalCentre regionalServant = RegionalCentreHelper.narrow(nameService.resolve_str(regionalStation));
-            regionalServant.registerMonitoringStation(newStationInfo);
-
+            regionalServant = RegionalCentreHelper.narrow(nameService.resolve_str(regionalCentre));
+            regionalServant.register_monitoring_station(newStationInfo);
 
             initGUI();
             initListeners();
-            // remove the "orb.run()" command,
-            // or the server will run but the GUI will not be visible
-            // orb.run();
 
         } catch (Exception e) {
             System.err.println("ERROR: " + e);
@@ -180,7 +191,7 @@ public class MonitoringStationServer extends JFrame {
         return readingValue.getValue();
     }
 
-    public void initGUI() {
+    private void initGUI() {
         // set up the GUI
         textarea = new JTextArea(20,25);
         scrollpane = new JScrollPane(textarea);
@@ -193,7 +204,6 @@ public class MonitoringStationServer extends JFrame {
         readingValue.setMinorTickSpacing(1);
         readingValue.setPaintTicks(true);
         readingValue.setPaintLabels(true);
-//        readingValue = new JTextField("", 20);
         panel = new JPanel();
         panel.add(readingValue);
         panel.add(takeReadingBtn);
@@ -204,12 +214,12 @@ public class MonitoringStationServer extends JFrame {
         getContentPane().add(panel, "Center");
 
         setSize(400, 500);
-        setTitle(servant.getInfo().station_name + " - " + servant.getInfo().location);
+        setTitle(servant.get_info().station_name + " - " + servant.get_info().location);
         // wait for invocations from clients
         textarea.append("Server started.  Waiting for clients...\n\n");
     }
 
-    public void initListeners() {
+    private void initListeners() {
         addWindowListener (new java.awt.event.WindowAdapter () {
             public void windowClosing (java.awt.event.WindowEvent evt) {
                 System.exit(0);
