@@ -1,0 +1,17 @@
+Instructions on running the code:
+
+Each servers need a set of program arguments to start.
+
+EnvironmentalCentre "centre name"
+RegionalCentre "centre name" "location" "environmental centre name"
+MonitoringStation "station name" "location" "regional centre name"
+
+Examples.
+
+
+java EnvironmentalCentreServer YorkshireEnvironmentalCentre
+java RegionalCentreServer DewsburyRegionalCentre Dewsbury YorkshireEnvironmentalCentre
+java MonitoringStationServer DStation1 Dewsbury DewsburyRegionalCentre
+
+This will create a YorkshireEnvironmentalCentre with a regional centre DewsburyRegionalCentre that has a station DStation1.
+

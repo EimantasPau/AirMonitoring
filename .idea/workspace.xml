@@ -2,31 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="622824e6-e8b9-4980-ab44-0c1b6cc547d0" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/AirMonitoring/AirMonitoring.idl" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirMonitoring/AirMonitoring.idl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirMonitoring/AirMonitoring/CentreInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirMonitoring/AirMonitoring/CentreInfo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirMonitoring/AirMonitoring/CentreInfoHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirMonitoring/AirMonitoring/CentreInfoHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirMonitoring/AirMonitoring/EnvironmentalCentreOperations.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirMonitoring/AirMonitoring/EnvironmentalCentreOperations.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirMonitoring/AirMonitoring/EnvironmentalCentrePOA.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirMonitoring/AirMonitoring/EnvironmentalCentrePOA.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirMonitoring/AirMonitoring/MonitoringStationOperations.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirMonitoring/AirMonitoring/MonitoringStationOperations.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirMonitoring/AirMonitoring/MonitoringStationPOA.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirMonitoring/AirMonitoring/MonitoringStationPOA.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirMonitoring/AirMonitoring/Reading.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirMonitoring/AirMonitoring/Reading.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirMonitoring/AirMonitoring/RegionalCentreOperations.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirMonitoring/AirMonitoring/RegionalCentreOperations.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirMonitoring/AirMonitoring/RegionalCentrePOA.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirMonitoring/AirMonitoring/RegionalCentrePOA.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirMonitoring/AirMonitoring/StationInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirMonitoring/AirMonitoring/StationInfo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirMonitoring/AirMonitoring/StationInfoHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirMonitoring/AirMonitoring/StationInfoHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirMonitoring/AirMonitoring/_EnvironmentalCentreStub.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirMonitoring/AirMonitoring/_EnvironmentalCentreStub.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirMonitoring/AirMonitoring/_MonitoringStationStub.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirMonitoring/AirMonitoring/_MonitoringStationStub.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirMonitoring/AirMonitoring/_RegionalCentreStub.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirMonitoring/AirMonitoring/_RegionalCentreStub.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirMonitoring/EnvironmentalCentreServant.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirMonitoring/EnvironmentalCentreServant.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirMonitoring/EnvironmentalCentreServer$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirMonitoring/EnvironmentalCentreServer$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirMonitoring/EnvironmentalCentreServer$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirMonitoring/EnvironmentalCentreServer$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirMonitoring/EnvironmentalCentreServer$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirMonitoring/EnvironmentalCentreServer$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirMonitoring/EnvironmentalCentreServer$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirMonitoring/EnvironmentalCentreServer$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirMonitoring/EnvironmentalCentreServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirMonitoring/EnvironmentalCentreServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirMonitoring/MonitoringStationServant$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirMonitoring/MonitoringStationServant$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirMonitoring/MonitoringStationServant.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirMonitoring/MonitoringStationServant.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/AirMonitoring/MonitoringStationServer$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirMonitoring/MonitoringStationServer$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/AirMonitoring/MonitoringStationServer$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirMonitoring/MonitoringStationServer$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/AirMonitoring/MonitoringStationServer$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirMonitoring/MonitoringStationServer$3.class" afterDir="false" />
@@ -34,47 +11,6 @@
       <change beforePath="$PROJECT_DIR$/out/production/AirMonitoring/MonitoringStationServer$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirMonitoring/MonitoringStationServer$5.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/AirMonitoring/MonitoringStationServer$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirMonitoring/MonitoringStationServer$6.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/AirMonitoring/MonitoringStationServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirMonitoring/MonitoringStationServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirMonitoring/RegionalCentreServant.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirMonitoring/RegionalCentreServant.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AirMonitoring/RegionalCentreServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AirMonitoring/RegionalCentreServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AirMonitoring.idl" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirMonitoring.idl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AirMonitoring/CentreInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirMonitoring/CentreInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AirMonitoring/CentreInfoHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirMonitoring/CentreInfoHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AirMonitoring/CentreInfoHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirMonitoring/CentreInfoHolder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AirMonitoring/EnvironmentalCentre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirMonitoring/EnvironmentalCentre.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AirMonitoring/EnvironmentalCentreHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirMonitoring/EnvironmentalCentreHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AirMonitoring/EnvironmentalCentreHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirMonitoring/EnvironmentalCentreHolder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AirMonitoring/EnvironmentalCentreOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirMonitoring/EnvironmentalCentreOperations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AirMonitoring/EnvironmentalCentrePOA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirMonitoring/EnvironmentalCentrePOA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AirMonitoring/MonitoringStation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirMonitoring/MonitoringStation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AirMonitoring/MonitoringStationHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirMonitoring/MonitoringStationHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AirMonitoring/MonitoringStationHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirMonitoring/MonitoringStationHolder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AirMonitoring/MonitoringStationOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirMonitoring/MonitoringStationOperations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AirMonitoring/MonitoringStationPOA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirMonitoring/MonitoringStationPOA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AirMonitoring/Reading.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirMonitoring/Reading.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AirMonitoring/ReadingHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirMonitoring/ReadingHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AirMonitoring/ReadingHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirMonitoring/ReadingHolder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AirMonitoring/RegionalCentre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirMonitoring/RegionalCentre.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AirMonitoring/RegionalCentreHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirMonitoring/RegionalCentreHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AirMonitoring/RegionalCentreHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirMonitoring/RegionalCentreHolder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AirMonitoring/RegionalCentreOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirMonitoring/RegionalCentreOperations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AirMonitoring/RegionalCentrePOA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirMonitoring/RegionalCentrePOA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AirMonitoring/StationInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirMonitoring/StationInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AirMonitoring/StationInfoHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirMonitoring/StationInfoHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AirMonitoring/StationInfoHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirMonitoring/StationInfoHolder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AirMonitoring/_EnvironmentalCentreStub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirMonitoring/_EnvironmentalCentreStub.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AirMonitoring/_MonitoringStationStub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirMonitoring/_MonitoringStationStub.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AirMonitoring/_RegionalCentreStub.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirMonitoring/_RegionalCentreStub.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AirMonitoring/alarmsHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirMonitoring/alarmsHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AirMonitoring/alarmsHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirMonitoring/alarmsHolder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AirMonitoring/centreListHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirMonitoring/centreListHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AirMonitoring/centreListHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirMonitoring/centreListHolder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AirMonitoring/readingsHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirMonitoring/readingsHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AirMonitoring/readingsHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirMonitoring/readingsHolder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AirMonitoring/stationListHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirMonitoring/stationListHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AirMonitoring/stationListHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AirMonitoring/stationListHolder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EnvironmentalCentreServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EnvironmentalCentreServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MonitoringStationServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MonitoringStationServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RegionalCentreServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RegionalCentreServer.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -91,65 +27,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Agency.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AirMonitoring/Agency.java">
+      <file leaf-file-name="Readme" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Readme">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="14" column="39" selection-end-line="28" />
+            <state relative-caret-position="126">
+              <caret line="6" column="50" lean-forward="true" selection-start-line="6" selection-start-column="50" selection-end-line="6" selection-end-column="50" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Alarm.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AirMonitoring/Alarm.java">
+      <file leaf-file-name="RegionalCentreServer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/RegionalCentreServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="17" column="11" selection-end-line="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CentreInfo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AirMonitoring/CentreInfo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="15" column="19" selection-end-line="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EnvironmentalCentreOperations.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AirMonitoring/EnvironmentalCentreOperations.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EnvironmentalCentrePOA.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AirMonitoring/EnvironmentalCentrePOA.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1365">
-              <caret line="65" selection-start-line="65" selection-end-line="65" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Reading.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AirMonitoring/Reading.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="15" column="33" lean-forward="true" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MonitoringStationServer.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/MonitoringStationServer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1596">
-              <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+            <state>
+              <caret line="186" column="28" lean-forward="true" selection-start-line="186" selection-start-column="28" selection-end-line="186" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -157,11 +48,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MonitoringStation.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AirMonitoring/MonitoringStation.java">
+      <file leaf-file-name="MonitoringStationServer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MonitoringStationServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+            <state relative-caret-position="-70">
+              <caret line="99" column="13" selection-start-line="99" selection-start-column="13" selection-end-line="99" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EnvironmentalCentreServer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/EnvironmentalCentreServer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="210" column="36" lean-forward="true" selection-start-line="210" selection-start-column="36" selection-end-line="210" selection-end-column="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -197,6 +103,7 @@
         <option value="$PROJECT_DIR$/src/EnvironmentalCentreServer.java" />
         <option value="$PROJECT_DIR$/src/AirMonitoring.idl" />
         <option value="$PROJECT_DIR$/src/MonitoringStationServer.java" />
+        <option value="$PROJECT_DIR$/Readme" />
       </list>
     </option>
   </component>
@@ -207,7 +114,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1912" />
+    <option name="x" value="1575" />
+    <option name="y" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
@@ -233,20 +141,13 @@
               <item name="AirMonitoring" type="b2602c69:ProjectViewProjectNode" />
               <item name="AirMonitoring" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="AirMonitoring" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AirMonitoring" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AirMonitoring" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="AirMonitoring" type="462c0819:PsiDirectoryNode" />
-              <item name="MonitoringStationPackage" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AirMonitoring" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AirMonitoring" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="MonitoringStationServer.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
+            </path>
+            <path>
+              <item name="AirMonitoring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AirMonitoring" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="RegionalCentreServer.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
             </path>
           </expand>
           <select />
@@ -303,7 +204,7 @@
     <configuration name="MonitoringStationServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="MonitoringStationServer" />
       <module name="AirMonitoring" />
-      <option name="PROGRAM_PARAMETERS" value="HStation113 Huddersfield DewsRegionalCentre -ORBInitialPort 1050  " />
+      <option name="PROGRAM_PARAMETERS" value="HStation13 Huddersfield DewsRegionalCentre -ORBInitialPort 1050  " />
     </configuration>
     <configuration name="RegionalCentreClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="RegionalCentreClient" />
@@ -313,7 +214,7 @@
     <configuration name="RegionalCentreServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="RegionalCentreServer" />
       <module name="AirMonitoring" />
-      <option name="PROGRAM_PARAMETERS" value="DewsRegionalCentre Huddersfield EnglandEnvironmentalCentre -ORBInitialPort 1050" />
+      <option name="PROGRAM_PARAMETERS" value="HuddersfieldRegionalCentre Dewsbury EnglandEnvironmentalCentre -ORBInitialPort 1050" />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
@@ -339,9 +240,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MonitoringStationServer" />
         <item itemvalue="Application.RegionalCentreServer" />
         <item itemvalue="Application.EnvironmentalCentreServer" />
+        <item itemvalue="Application.MonitoringStationServer" />
         <item itemvalue="Application.RegionalCentreClient" />
         <item itemvalue="Application.Main" />
       </list>
@@ -379,12 +280,12 @@
       <workItem from="1524405919833" duration="392000" />
       <workItem from="1524406328918" duration="424000" />
       <workItem from="1524743573560" duration="17136000" />
-      <workItem from="1524815442333" duration="995000" />
+      <workItem from="1524815442333" duration="4294000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="161060000" />
+    <option name="totallyTimeSpent" value="164359000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -402,6 +303,7 @@
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32890365" />
       <window_info id="simpleUML" order="7" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.2868217" />
       <window_info anchor="right" id="Palette&#9;" order="9" />
       <window_info id="Image Layers" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
@@ -409,11 +311,11 @@
       <window_info anchor="right" id="Maven Projects" order="5" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.32890365" />
-      <window_info anchor="bottom" id="Run" order="5" weight="0.04429679" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.18161683" />
+      <window_info anchor="bottom" id="Run" order="5" weight="0.38870433" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.17054264" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15724947" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15724947" />
       <window_info anchor="right" id="Database" order="6" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -421,7 +323,6 @@
       <window_info anchor="right" id="Theme Preview" order="7" />
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="2" weight="0.45293465" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.2868217" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
@@ -449,13 +350,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/AirMonitoring/Reading.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="20" lean-forward="true" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_161/src.zip!/com/sun/corba/se/impl/orb/ORBImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="24696">
@@ -702,23 +596,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/EnvironmentalCentreServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="66" column="107" selection-start-line="66" selection-start-column="107" selection-end-line="66" selection-end-column="107" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RegionalCentreServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="94" column="42" selection-start-line="94" selection-start-column="42" selection-end-line="94" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AirMonitoring/Agency.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
@@ -771,17 +648,44 @@
     <entry file="file://$PROJECT_DIR$/src/AirMonitoring/Reading.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
-          <caret line="15" column="33" lean-forward="true" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+          <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MonitoringStationServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1596">
-          <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+        <state relative-caret-position="-70">
+          <caret line="99" column="13" selection-start-line="99" selection-start-column="13" selection-end-line="99" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/EnvironmentalCentreServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="210" column="36" lean-forward="true" selection-start-line="210" selection-start-column="36" selection-end-line="210" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RegionalCentreServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="186" column="28" lean-forward="true" selection-start-line="186" selection-start-column="28" selection-end-line="186" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Readme">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="6" column="50" lean-forward="true" selection-start-line="6" selection-start-column="50" selection-end-line="6" selection-end-column="50" />
         </state>
       </provider>
     </entry>

@@ -1,42 +1,36 @@
-
-
 module AirMonitoring {
- struct Reading {
+    struct Reading {
         long time;
         long date;
         string station_name;
         long reading_value;
     };
- struct StationInfo {
-        string station_name;
-        string location;
+    struct StationInfo {
+         string station_name;
+         string location;
     };
- struct CentreInfo {
-             string centre_name;
-             string location;
-         };
- typedef sequence<Reading> readings;
- typedef sequence<StationInfo> stationList;
- typedef sequence<CentreInfo> centreList;
-
+    struct CentreInfo {
+         string centre_name;
+         string location;
+    };
+    typedef sequence<Reading> readings;
+    typedef sequence<StationInfo> stationList;
+    typedef sequence<CentreInfo> centreList;
     struct Alarm {
         string centre_name;
         readings alarm_readings;
     };
-
-     interface MonitoringStation {
-         Reading reading();
-         readonly attribute readings reading_log;
-         void take_reading();
-
-         void set_info(in StationInfo info);
-         StationInfo get_info();
-         void turn_on();
-         void turn_off();
-         void reset();
-     } ;
-
-     interface RegionalCentre {
+    interface MonitoringStation {
+        Reading reading();
+        readonly attribute readings reading_log;
+        void take_reading();
+        void set_info(in StationInfo info);
+        StationInfo get_info();
+        void turn_on();
+        void turn_off();
+        void reset();
+    };
+    interface RegionalCentre {
         readonly attribute stationList connected_devices;
         CentreInfo get_centre_info();
         void set_info(in CentreInfo info);
@@ -46,14 +40,13 @@ module AirMonitoring {
         readings alarms();
         void register_monitoring_station(in StationInfo info);
         void raise_alarm(in Reading reading);
-
-     };
-     struct Agency {
+    };
+    struct Agency {
         string name;
         string region_of_interest;
         string contact_details;
-     };
-     interface EnvironmentalCentre {
+    };
+    interface EnvironmentalCentre {
         readings all_readings();
         readings get_readings(in string centre_name);
         readonly attribute centreList connected_centres;
@@ -61,9 +54,6 @@ module AirMonitoring {
         void unregister_regional_centre(in CentreInfo info);
         void raise_alarm(in Alarm alarm);
         void register_agency(in Agency agency);
-     };
-
-
-
+    };
 };
 
